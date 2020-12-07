@@ -10,8 +10,6 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -march=native -g")
 
-add_subdirectory(third_party/ EXCLUDE_FROM_ALL)
-
 find_library(TbbLib tbb)
 find_package (Threads)
 
