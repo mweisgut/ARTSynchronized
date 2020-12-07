@@ -1,6 +1,3 @@
-# TBB
-add_subdirectory(tbb)
-
 # JEMALLOC
 if(NOT APPLE)
   # Only configure jemalloc for non-Apple builds, as we cannot properly replace the allocator on Mac using static linking:

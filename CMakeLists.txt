@@ -12,6 +12,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -march=native -
 
 add_subdirectory(third_party/ EXCLUDE_FROM_ALL)
 
+find_library(TbbLib tbb)
 find_package (Threads)
 
 set(ART_FILES OptimisticLockCoupling/Tree.cpp ROWEX/Tree.cpp ART/Tree.cpp)
@@ -23,7 +24,7 @@ if(NOT APPLE)
     target_compile_definitions(ARTSynchronized PUBLIC COMPILED_WITH_JEMALLOC)
 endif()
 
-target_link_libraries(ARTSynchronized PUBLIC tbb ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(ARTSynchronized PUBLIC ${TbbLib} ${CMAKE_THREAD_LIBS_INIT})
 
 set(SOURCE_FILES example.cpp)
 add_executable(example ${SOURCE_FILES})
