@@ -13,8 +13,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -march=native -
 find_library(TbbLib tbb)
 find_package (Threads)
 
-set(ART_FILES OptimisticLockCoupling/Tree.cpp ROWEX/Tree.cpp ART/Tree.cpp)
-add_library(ARTSynchronized ${ART_FILES})
+set(ART_FILES
+  OptimisticLockCoupling/Tree.cpp
+  ROWEX/Tree.cpp
+  ART/Tree.cpp
+)
+
+add_library(
+  ARTSynchronized
+
+  ${ART_FILES}
+)
 
 if(NOT APPLE)
     # Do not use jemalloc on Mac as we cannot properly replace the allocator.

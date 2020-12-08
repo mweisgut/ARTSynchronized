@@ -6,6 +6,8 @@
 #include <memory>
 #include <assert.h>
 
+namespace ART {
+
 using KeyLen = uint32_t;
 
 class Key {
@@ -117,5 +119,7 @@ inline void Key::setKeyLen(KeyLen newLen) {
         data = stackKey;
     }
 }
+
+} // namespace ART
 
 #endif // ART_KEY_H
