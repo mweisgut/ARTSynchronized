@@ -25,6 +25,13 @@ add_library(
   ${ART_FILES}
 )
 
+target_include_directories(
+  ARTSynchronized
+
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
 if(NOT APPLE)
     # Do not use jemalloc on Mac as we cannot properly replace the allocator.
     target_link_libraries(ARTSynchronized PUBLIC jemalloc)
