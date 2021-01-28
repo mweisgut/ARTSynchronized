@@ -15,7 +15,7 @@
 
 using namespace ART;
 
-using TID = uint64_t;
+using TID = uint32_t;
 
 namespace ART_unsynchronized {
 /*
