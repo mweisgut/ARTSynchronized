@@ -5,20 +5,26 @@ Two different synchronization schemes are used, Optimistic Lock Coupling and Rea
 
 The techniques used are described in the following papers:
 
-- ["The Adaptive Radix Tree: ARTful Indexing for Main-Memory Databases"](https://db.in.tum.de/~leis/papers/ART.pdf)
-- ["The ART of Practical Synchronization": DaMoN 2016](https://dl.acm.org/citation.cfm?id=2933352)
+- "The Adaptive Radix Tree: ARTful Indexing for Main-Memory Databases": https://db.in.tum.de/~leis/papers/ART.pdf
+- "The ART of Practical Synchronization": DaMoN 2016 https://dl.acm.org/citation.cfm?id=2933352
 
-## Required Packages
+## Required packages
 - cmake
-- C++14 compiler
+- C++ 14 compiler
+- tbb
+- jemalloc
 
-## Build Instructions
+for Debian/Ubuntu:
+sudo apt-get install cmake g++ libtbb-dev libjemalloc-dev
+
+## Build instructions
     mkdir build
     cd build/
     cmake ..
     make
 
-## Execution Instructions
+
+## Execution instructions
 Run the example test with:
 
     ./example n 0|1|2
@@ -27,6 +33,14 @@ Run the example test with:
     0: sorted keys
     1: dense keys
     2: sparse keys
+
+## Known problems
+
+Some g++ versions fail to link jemalloc.
+Ensure with ldd that jemalloc is linked.
+If it's not then either use clang or load jemalloc manually:
+
+    LD_PRELOAD=/path/to/jemalloc.so ./example ...
 
 ## License
 Copyright 2015-2016 Florian Scheibner
